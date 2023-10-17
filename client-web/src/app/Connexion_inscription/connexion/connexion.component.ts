@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {PianoTracker} from '@sncf/ngx-piano';
 
 @Component({
   selector: 'app-connexion',
@@ -9,7 +10,8 @@ import {AuthService} from "../../services/auth.service";
 })
 export class ConnexionComponent implements OnInit {
   constructor(private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private pianoTracker: PianoTracker) { }
 
   login!: string;
   password!: string;
@@ -24,6 +26,9 @@ export class ConnexionComponent implements OnInit {
     this.authService.login(this.login, this.password).subscribe({
       next: (res: {token: string}) => {
         this.authService.loginSuccessful(res);
+        this.pianoTracker.sendEvent("Login successfull", {
+          value: this.login + "is logged"
+        })
         this.router.navigateByUrl('');
       }
     })

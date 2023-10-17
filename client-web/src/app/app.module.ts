@@ -33,6 +33,7 @@ import {RechercheComponent} from "./Recherche/recherche.component";
 import {AjoutActeurComponent} from "./Acteurs/ajout-acteur/ajout-acteur.component";
 import {RealisateursComponent} from "./Realisateurs/realisateurs.component";
 import {AjoutRealisateurComponent} from "./Realisateurs/ajout-realisateur/ajout-realisateur.component";
+import {NgxPianoModule} from "@sncf/ngx-piano";
 
 @NgModule({
   declarations: [
@@ -66,7 +67,11 @@ import {AjoutRealisateurComponent} from "./Realisateurs/ajout-realisateur/ajout-
     IvyCarouselModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPianoModule.forRoot({
+      site: "0001",
+      collectDomain: "test.cinema"
+    })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

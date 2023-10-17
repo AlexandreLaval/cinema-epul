@@ -28,6 +28,7 @@ import {AjoutActeurComponent} from "./Acteurs/ajout-acteur/ajout-acteur.componen
 import {RealisateursComponent} from "./Realisateurs/realisateurs.component";
 import {AjoutRealisateurComponent} from "./Realisateurs/ajout-realisateur/ajout-realisateur.component";
 import {AuthGuardService} from "./services/auth-guard.service";
+import {NgxPianoRouteMetaData} from "@sncf/ngx-piano";
 
 const routes: Routes = [
   {
@@ -45,7 +46,19 @@ const routes: Routes = [
   {path: 'ajoutRealisateur', component: AjoutRealisateurComponent, canActivate: [AuthGuardService]},
   {path: 'categories', component: BarreAffichageCategorieComponent, canActivate: [AuthGuardService]},
   {path: 'categories', component: VideosComponent, canActivate: [AuthGuardService]},
-  {path: 'acteurs', component: ActeursComponent, canActivate: [AuthGuardService]},
+  {
+    path: 'acteurs',
+    component: ActeursComponent,
+    data: {
+      piano :{
+        ngxPianoRouteData: {
+          page: 'Acteurs',
+          page_chapter1: 'Home'
+        }
+      } as NgxPianoRouteMetaData
+    },
+    canActivate: [AuthGuardService]
+  },
   {path: 'personnalite', component: BarreAffichageActeurRealisateurComponent, canActivate: [AuthGuardService]},
   {path: 'recherche', component: RechercheComponent, canActivate: [AuthGuardService]},
   {
@@ -56,7 +69,18 @@ const routes: Routes = [
   {path: 'modifierProfil', component: ModifierProfilComponent, canActivate: [AuthGuardService]},
   //Route public
   {path: 'ajoutProfil', component: AjoutProfilComponent},
-  {path: 'connexion', component: ConnexionComponent}
+  {
+    path: 'connexion',
+    component: ConnexionComponent,
+    data: {
+      piano :{
+        ngxPianoRouteData: {
+          page: 'Login',
+          page_chapter1: 'login'
+        }
+      } as NgxPianoRouteMetaData
+    },
+  }
 ];
 
 @NgModule({

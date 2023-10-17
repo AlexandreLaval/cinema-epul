@@ -5,7 +5,7 @@
   <input type="login" name="login" placeholder="Identifiant" [(ngModel)]="login">
   <label>Mot de passe </label>
   <input type="password" name="password" placeholder="Mot de passe" [(ngModel)]="password">
-  <input type="submit" class="btn-connexion" (click)="onSubmit()" value="Connexion">
+  <input ngxPianoTrackClick ngxPianoActionType="ACTION" ngxPianoClickName="login_actuin" type="submit" class="btn-connexion" (click)="onSubmit()" value="Connexion">
 </form>
 
 <p>Vous n'avez pas encore de compte my POLYCANAL ?</p>
